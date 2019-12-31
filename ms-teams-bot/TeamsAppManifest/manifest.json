@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.5/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.5",
+  "version": "1.0",
+  "id": "c76c3bcb-88bd-429d-81bf-9cb58936d3b1",
+  "packageName": "com.brownandcaldwell.teams.folder",
+  "developer": {
+    "name": "Brown and Caldwell",
+    "websiteUrl": "https://brownandcaldwell.com",
+    "privacyUrl": "https://brownandcaldwell.com",
+    "termsOfUseUrl": "https://brownandcaldwell.com"
+  },
+  "name": {
+    "short": "Project Folder Extension",
+    "full": "Microsoft Teams Project Folder Extension"
+  },
+  "description": {
+    "short": "Messaging extension for sending project folder links internally",
+    "full": "Messaging extension for sending project folder links internally"
+  },
+  "icons": {
+    "outline": "icon-outline.png",
+    "color": "icon-color.png"
+  },
+  "accentColor": "#FFFFFF",
+  "composeExtensions": [
+    {
+      "botId": "c76c3bcb-88bd-429d-81bf-9cb58936d3b1",
+      "commands": [
+        {
+          "id": "insertServerLink",
+          "type": "action",
+          "title": "Insert Server Link",
+          "description": "Insert a link to a server folder or file",
+          "initialRun": false,
+          "fetchTask": false,
+          "context": [
+            "compose",
+            "message"
+          ],
+          "parameters": [
+            {
+              "name": "link",
+              "title": "Link",
+              "description": "i.e. \\\\bcphxfp01\\Projects\\Example Client\\Example Project",
+              "inputType": "text"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "permissions": [
+    "identity"
+  ]
+}
