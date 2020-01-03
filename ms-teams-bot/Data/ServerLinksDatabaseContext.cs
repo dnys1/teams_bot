@@ -10,6 +10,6 @@ namespace BC.ServerTeamsBot.Data
         {
         }
 
-        public DbSet<Models.ServerLink> ServerLink { get; set; }
+        public DbSet<Models.ServerLink> ServerLinks { get; set; }
 }
 }

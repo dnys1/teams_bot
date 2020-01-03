@@ -15,6 +15,8 @@ using BC.ServerTeamsBot.Data;
 using System.Collections.Concurrent;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.Extensions.FileProviders;
 
 namespace BC.ServerTeamsBot
 {
@@ -40,7 +42,7 @@ namespace BC.ServerTeamsBot
 
             // Configure the SQL database for storing and retrieving links via ID
             services.AddDbContext<ServerLinksDatabaseContext>(
-                options => options.UseSqlServer(Configuration.GetConnectionString("ServerLinksDatabaseContext")));
+                options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,15 +51,21 @@ namespace BC.ServerTeamsBot
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseStaticFiles();
             }
             else
             {
                 app.UseExceptionHandler("/link/error");
                 app.UseHsts();
+                app.UseStaticFiles(new StaticFileOptions
+                {
+                    FileProvider = new PhysicalFileProvider(
+                   Path.Combine(Directory.GetCurrentDirectory(), "images")),
+                    RequestPath = "/images"
+                });
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
 
             app.UseMvc(routes => {
                 routes.MapRoute("links", "link/{id:guid}",

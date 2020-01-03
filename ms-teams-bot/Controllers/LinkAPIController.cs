@@ -34,19 +34,21 @@ namespace BC.ServerTeamsBot.Controllers
 
                 var serverLink = JsonConvert.DeserializeObject<ServerLink>(body);
 
-                if (ModelState.IsValid)
+                if (serverLink.Link == null || serverLink.From == null)
                 {
-                    if (serverLink.ID == null)
-                    {
-                        serverLink.ID = Guid.NewGuid().ToString();
-                    }
-                    if (serverLink.Link == null || serverLink.From == null)
-                    {
-                        return BadRequest();
-                    }
-                    _context.Add(serverLink);
-                    await _context.SaveChangesAsync();
+                    return BadRequest();
                 }
+                if (serverLink.ID == null)
+                {
+                    serverLink.ID = Guid.NewGuid().ToString();
+                }
+
+                // Format the link to be file:// if a filepath
+                serverLink.Link = LinkFormatter.FormatString(serverLink.Link);
+
+                // Push changes to database
+                _context.Add(serverLink);
+                await _context.SaveChangesAsync();
             }
 
             return Ok();

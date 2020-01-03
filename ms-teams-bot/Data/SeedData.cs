@@ -17,21 +17,23 @@ namespace BC.ServerTeamsBot.Data
                 serviceProvider.GetRequiredService<DbContextOptions<ServerLinksDatabaseContext>>()))
             {
                 // Look for any data
-                if (context.ServerLink.Any())
+                if (context.ServerLinks.Any())
                 {
                     return; // DB has been seeded
                 }
 
-                context.ServerLink.AddRange(
+                context.ServerLinks.AddRange(
                     new ServerLink
                     {
                         ID = Guid.NewGuid().ToString(),
-                        Link = @"file:\\bcphxfp01\projects\Phoenix, City of\154095 - WSD-WWTPs Update Plans\Drawings\ES\91st"
+                        Link = @"file:\\bcphxfp01\projects\Phoenix, City of\154095 - WSD-WWTPs Update Plans\Drawings\ES\91st",
+                        From = "Dillon Nys"
                     },
                     new ServerLink
                     {
                         ID = Guid.NewGuid().ToString(),
-                        Link = @"pw://brwncald-pw.bentley.com:brwncald-pw-01/Documents/P{bb47a88e-c112-4ec7-9a35-95d95b3b4bba}/"
+                        Link = @"pw://brwncald-pw.bentley.com:brwncald-pw-01/Documents/P{bb47a88e-c112-4ec7-9a35-95d95b3b4bba}/",
+                        From = "Dillon Nys"
                     }
                 );
 

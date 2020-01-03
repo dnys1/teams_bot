@@ -21,19 +21,21 @@ namespace BC.ServerTeamsBot.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return NotFound(null);
             }
 
-            var serverLink = await _context.ServerLink
+            var serverLink = await _context.ServerLinks
                 .FindAsync(id);
 
             if (serverLink == null)
             {
-                return NotFound();
+                return NotFound(id);
             }
 
             // Redirect to file: URI effectively opens the folder/file on click
             // ONLY IN IE though -- Chrome thinks is unsafe
+            // Whichever domain this lands on needs to be added to the Trusted Zone in IE!
+
             return RedirectPermanent(serverLink.Link);
 
             //return View(serverLink);

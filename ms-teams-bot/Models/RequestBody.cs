@@ -52,7 +52,21 @@ namespace BC.ServerTeamsBot.Models
     public class Data
     {
         public string Link { get; set; }
+        public string OriginalLink
+        {
+            get
+            {
+                return Link;
+            }
+            set
+            {
+                Link = value;
+            }
+        }
         public string GUID { get; set; }
+        public string FileLink { get; set; }
+        
+        public string FolderLink { get; set; }
     }
 
     public class Context

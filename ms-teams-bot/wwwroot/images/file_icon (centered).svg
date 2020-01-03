@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1024"
+   height="1024"
+   viewBox="0 0 270.93333 270.93334"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="file_icon (centered).svg"
+   inkscape:export-filename="C:\Users\dnys\source\repos\ms-teams-bot\ms-teams-bot\wwwroot\images\file_icon.png"
+   inkscape:export-xdpi="24"
+   inkscape:export-ydpi="24"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <defs
+     id="defs2">
+    <clipPath
+       id="clipPath839"
+       clipPathUnits="userSpaceOnUse">
+      <rect
+         y="141.44913"
+         x="-74.033661"
+         height="67.886459"
+         width="68.688263"
+         id="rect841"
+         style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
+    </clipPath>
+    <clipPath
+       id="clipPath839-2"
+       clipPathUnits="userSpaceOnUse">
+      <rect
+         y="141.44913"
+         x="-74.033661"
+         height="67.886459"
+         width="68.688263"
+         id="rect841-6"
+         style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="260.05875"
+     inkscape:cy="863.99732"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-26.06665)">
+    <g
+       id="g3797"
+       transform="matrix(0.04840748,0,0,0.04840748,44.853186,43.994661)">
+      <g
+         id="g3777">
+        <path
+           id="path3771"
+           d="M 0,4800 H 3800 V 840 L 2960,0 H 0"
+           inkscape:connector-curvature="0"
+           style="fill:#eeeeee" />
+        <path
+           id="path3773"
+           d="m 2960,840 h 840 L 2960,0"
+           inkscape:connector-curvature="0"
+           style="fill:#bbbbbb" />
+        <path
+           id="path3775"
+           d="M 3800,1680 V 840 h -840"
+           inkscape:connector-curvature="0"
+           style="fill:#888888" />
+      </g>
+      <g
+         id="g3781">
+        <path
+           id="path3779"
+           d="M 900,1976 H 2900 V 1764 H 900 m 0,670 H 2900 V 2223 H 900 m 0,670 H 2900 V 2681 H 900 m 0,635 H 2100 V 3140 H 900"
+           inkscape:connector-curvature="0"
+           style="fill:#555555" />
+      </g>
+    </g>
+  </g>
+</svg>

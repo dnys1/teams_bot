@@ -44,30 +44,23 @@ namespace BC.ServerTeamsBot.Controllers
         }
 
         // Returns the guid for the registered link in the database
-        private async Task<string> CreateGuidInDatabase(string from, string link)
+        private async Task<string> RegisterLinkInDatabase(string from, string link)
         {
-            // Format path as file URI
-            if (!link.Contains("file:"))
-            {
-                if (link.Contains("P:"))
-                {
-                    link = "file:///" + link.Replace('\\', '/');
-                } else if (link.Contains(@"\\"))
-                {
-                    link = "file:" + link.Replace('\\', '/');
-                }
-            }
+            link = LinkFormatter.FormatString(link);
+
             // Upload path to DB
-            var newGuid = Guid.NewGuid().ToString();
+            var guid = Guid.NewGuid().ToString();
+
             _context.Add(
                 new ServerLink
                 {
                     From = from,
                     Link = link,
-                    ID = newGuid,
+                    ID = guid,
                 });
             await _context.SaveChangesAsync();
-            return newGuid;
+
+            return $"{LinkFormatter.BaseUrl}/{guid}";
         }
 
         [HttpPost]
@@ -97,7 +90,19 @@ namespace BC.ServerTeamsBot.Controllers
             if (jsonObj != null)
             {
                 var from = jsonObj.From.Name;
-                var link = jsonObj.Value.Data.Link;
+                var link = jsonObj.Value.Data.OriginalLink;
+
+                if (LinkFormatter.IsCopyAsPathLink(link))
+                {
+                    // Remove "s from link generated from "Copy as path" in Windows
+                    link = link.Substring(1, link.Length - 2);
+                    jsonObj.Value.Data.OriginalLink = link;
+                }
+
+                if (!LinkFormatter.IsProperlyFormatted(link))
+                {
+                    throw new Exception("Improperly formatted string. Please try again.");
+                }
 
                 // Retrieve user's home drive if a P:/ link
                 if (link.Contains("P:/"))
@@ -105,11 +110,19 @@ namespace BC.ServerTeamsBot.Controllers
                     var UNCRoot = await GetHomeUNC(from);
                 }
 
-                // Create the link in the database and embed in Request.Body
-                var guid = await CreateGuidInDatabase(from, link);
+                // Create the links in the database and embed in Request.Body
+                if (Path.HasExtension(link))
+                {
+                    var fileLink = await RegisterLinkInDatabase(from, link);
+                    jsonObj.Value.Data.FileLink = fileLink;
 
-                var newLink = $"http://localhost:3978/link/{guid}";
-                jsonObj.Value.Data.Link = newLink;
+                    var folderLink = await RegisterLinkInDatabase(from, Path.GetDirectoryName(link));
+                    jsonObj.Value.Data.FolderLink = folderLink;
+                } else
+                {
+                    var folderLink = await RegisterLinkInDatabase(from, link);
+                    jsonObj.Value.Data.FolderLink = folderLink;
+                }
 
                 var json = JsonConvert.SerializeObject(jsonObj);
                 var requestContent = new StringContent(json, Encoding.UTF8, "application/json");
