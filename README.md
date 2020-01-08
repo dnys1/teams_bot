@@ -9,7 +9,9 @@ returned a card with a button that can open the path. The backend to this reques
 running in Azure currently which processes the link, creates the card, and sends it back to Teams. 
 
 ![Messaging Extension](/images/extension.PNG)
+
 ![Returned Card](/images/edit.PNG)
+
 ![Sent Card](/images/sent.PNG)
 
 This solution was, unfortuantely, not as straightforward as I had thought it would be. The Bot Framework SDK has classes to create 
