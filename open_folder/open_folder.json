@@ -1,0 +1,9 @@
+{
+  "name": "com.brwncald.open_folder",
+  "description": "Open local folders for integration with Teams Bot",
+  "path": "C:\\Users\\dnys\\source\\repos\\ms-teams-bot\\open_folder\\bin\\Release\\netcoreapp2.1\\publish\\open_folder.exe",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://homlplejipoffkcmocpmohidgffibkel/"
+  ]
+}

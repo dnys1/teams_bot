@@ -1,0 +1,23 @@
+{
+    "name": "Project Folder Extension",
+    "version": "0.1",
+    "description": "Integrate with Teams Bot to open project folders locally",
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": false
+    },
+    "content_scripts": [{
+        "all_frames": true,
+        "matches": [
+            "https://serverlinks.azurewebsites.net/*"
+        ],
+        "js": [
+            "contentScript.js"
+        ]
+    }],
+    "offline_enabled": true,
+    "permissions": ["nativeMessaging", "tabs"],
+    "manifest_version": 2
+}
