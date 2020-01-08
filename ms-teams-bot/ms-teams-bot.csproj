@@ -20,5 +20,9 @@
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\link_formatter\link_formatter.csproj" />
+  </ItemGroup>
   
 </Project>

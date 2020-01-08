@@ -7,11 +7,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="add_to_windows_path.reg" />
+    <None Remove="open_folder.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="add_to_windows_path.reg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="open_folder.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ms-teams-bot\ms-teams-bot.csproj" />
+    <ProjectReference Include="..\link_formatter\link_formatter.csproj" />
   </ItemGroup>
 
 </Project>

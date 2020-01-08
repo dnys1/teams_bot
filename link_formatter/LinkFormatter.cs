@@ -9,7 +9,7 @@ namespace BC.ServerTeamsBot.Data
 {
     // A static class for formatting links. Used in this project and the native host.
     public static class LinkFormatter
-{
+    {
         public static string BaseUrl = "https://serverlinks.azurewebsites.net/link";
 
         public static string ImageBaseUrl = "https://serverlinks.azurewebsites.net/images";
@@ -31,7 +31,8 @@ namespace BC.ServerTeamsBot.Data
             if (link[link.Length - 1] != Path.AltDirectorySeparatorChar && !Path.HasExtension(link))
             {
                 return link + Path.AltDirectorySeparatorChar;
-            } else
+            }
+            else
             {
                 return link;
             }
@@ -53,5 +54,5 @@ namespace BC.ServerTeamsBot.Data
         public static bool IsLocalPath(string link) => localDirRegex.IsMatch(link);
 
         public static bool IsCopyAsPathLink(string link) => copyAsPathRegex.IsMatch(link);
-}
+    }
 }
