@@ -2,7 +2,7 @@
 Currently, there is no supported way of sharing links to the BC server or ProjectWise server through Microsoft Teams. And as we transition towards this platform and away from standard methods of sharing these links (like e-mail), this pitfall could impede productivity. The system described below solves this problem.
 
 ## Demo
-<iframe width="560" height="315" src="https://www.youtube.com/embed/o5GaIPTenus" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" style="margin: 0 auto; display: block;" allowfullscreen></iframe>
+Click [here](https://youtu.be/o5GaIPTenus) to see a demo of the interaction.
 
 ## Components
 The system is composed of five main components which integrate to provide a smooth experience\*.
@@ -30,6 +30,18 @@ Some ideas I had that would make this more robust:
 
 ## Installation
 
-On the [Releases](https://github.com/dnys1/teams-bot/releases) page, you'll find the Teams App, the Chrome extension, and an installer for the native host, which takes care of adding the necessary registry entry and ensuring the native host is in the correct location.
+### Installing the Teams App
+On the [Releases](https://github.com/dnys1/teams-bot/releases) page, you'll find the Teams App package. The Teams App can be installed by following [this guide](https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/apps-upload).
 
-The Teams App can be installed by following this guide, and the Chrome extension can be installed by enabling Developer extensions and loading the package on the Extensions page.
+
+### Installing the Chrome Extension
+The Chrome extension can be installed by enabling Developer extensions, clicking "Load Unpacked" on the Extensions page, and pointing to the `chrome_ext` folder in the root of the project. Copy the `ID` that appears in the extension card.
+
+![Chrome Extension ID](images/chrome_ext_id.png)
+
+### Installing the Native Host
+Installation of the native host is a little cumbersome at the moment, although an installer could be created to automate this. For now, download the zip and unzip it somewhere. Open `open_folder.json` in the unzipped directory, and modify the `allowed_origins` entry to match the `ID` copied in the previous step (e.g. `chrome-extension://{ID}`). Modify the `path` entry to the location of the `open_folder.exe` runtime.
+
+Edit the `add_to_windows_reg.reg` file and modify the location to point to `open_folder.json`. Save it and double-click it to add the key to the registry.
+
+**Installation should be complete now.**
