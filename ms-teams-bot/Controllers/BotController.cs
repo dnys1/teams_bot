@@ -38,6 +38,7 @@ namespace BC.ServerTeamsBot.Controllers
             _context = context;
         }
 
+        // TODO: Get the UNC path for the user if submitted a P:/ link
         private async Task<string> GetHomeUNC(string user)
         {
             return null;
@@ -69,7 +70,9 @@ namespace BC.ServerTeamsBot.Controllers
             // Delegate the processing of the HTTP POST to the adapter.
             // The adapter will invoke the bot.
 
-            // Enable rewind of the request body so we can read it multiple times
+            // Enable rewind of the request body so we can read it multiple times.
+            // We need to read it here in this method and then rewind it so that
+            // Adapter.ProcessAsync() can read it from the beginning as well.
             Microsoft.AspNetCore.Http.Internal.BufferingHelper.EnableRewind(Request);
 
             RequestBody jsonObj;
@@ -113,6 +116,8 @@ namespace BC.ServerTeamsBot.Controllers
                 // Create the links in the database and embed in Request.Body
                 if (Path.HasExtension(link))
                 {
+                    // Create both a file and folder link for file paths given,
+                    // in case the user would like to go to the enclosing folder.
                     var fileLink = await RegisterLinkInDatabase(from, link);
                     jsonObj.Value.Data.FileLink = fileLink;
 
@@ -120,6 +125,7 @@ namespace BC.ServerTeamsBot.Controllers
                     jsonObj.Value.Data.FolderLink = folderLink;
                 } else
                 {
+                    // Create only the folder link for folder paths sent.
                     var folderLink = await RegisterLinkInDatabase(from, link);
                     jsonObj.Value.Data.FolderLink = folderLink;
                 }

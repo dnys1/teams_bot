@@ -32,13 +32,7 @@ namespace BC.ServerTeamsBot.Controllers
                 return NotFound(id);
             }
 
-            // Redirect to file: URI effectively opens the folder/file on click
-            // ONLY IN IE though -- Chrome thinks is unsafe
-            // Whichever domain this lands on needs to be added to the Trusted Zone in IE!
-
-            return RedirectPermanent(serverLink.Link);
-
-            //return View(serverLink);
+            return View(serverLink);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -5,11 +5,12 @@
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     <UserSecretsId>221ddcb3-62f8-4684-a642-8c514744c0d7</UserSecretsId>
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
+    <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" />
+    <PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="1.3.1" />
     <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.7.0" />
     <PackageReference Include="Microsoft.NET.Sdk.Razor" Version="3.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
@@ -19,5 +20,5 @@
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
-
+  
 </Project>

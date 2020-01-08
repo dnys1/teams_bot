@@ -1,16 +1,10 @@
 ﻿@model BC.ServerTeamsBot.Models.ServerLink
 @{
-    ViewData["Title"] = "Open Link";
+    ViewData["Title"] = "Opening...";
 }
 
-<div class="jumbotron row">
-    <div class="col-sm align-self-center">
-        <img src="~/images/logo.jpg" />
-    </div>
-    <div class="col-sm align-self-center">
-        <h5 class="my-3">@Model.From sent you a link!</h5>
-        <code>@Model.Link</code>
-        <br />
-        <a class="btn btn-lg btn-primary mt-3" href="@Model.Link" role="button">Open Link</a>
-    </div>
-</div>
+@*<div style="text-align: center; width: 100%">
+    <h2>Opening...</h2>
+    <code>@Model.Link</code>
+</div>*@
+<input id="path" type="hidden" value="@Model.Link" />

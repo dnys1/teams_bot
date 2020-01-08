@@ -26,7 +26,7 @@ namespace BC.ServerTeamsBot.Data
                     new ServerLink
                     {
                         ID = Guid.NewGuid().ToString(),
-                        Link = @"file:\\bcphxfp01\projects\Phoenix, City of\154095 - WSD-WWTPs Update Plans\Drawings\ES\91st",
+                        Link = @"file://bcphxfp01/projects/Phoenix, City of/154095 - WSD-WWTPs Update Plans/Drawings/ES/91st",
                         From = "Dillon Nys"
                     },
                     new ServerLink

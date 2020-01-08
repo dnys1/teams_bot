@@ -1,59 +1,59 @@
 {
-    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.5/MicrosoftTeams.schema.json",
-    "manifestVersion": "1.5",
-    "version": "1.0",
-    "id": "c76c3bcb-88bd-429d-81bf-9cb58936d3b1",
-    "packageName": "com.brownandcaldwell.teams.bots.folder",
-    "developer": {
-        "name": "Brown and Caldwell",
-        "websiteUrl": "https://brownandcaldwell.com",
-        "privacyUrl": "https://brownandcaldwell.com",
-        "termsOfUseUrl": "https://brownandcaldwell.com"
-    },
-    "icons": {
-        "color": "color.png",
-        "outline": "outline.png"
-    },
-    "name": {
-        "short": "Project Folder Extension",
-        "full": "BC Project Folder Extension"
-    },
-    "description": {
-        "short": "Messaging extension for sending project folder links internally",
-        "full": "Messaging extension for sending project folder and file links to people internally"
-    },
-    "accentColor": "#FFFFFF",
-    "composeExtensions": [
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.5/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.5",
+  "version": "1.0",
+  "id": "f1ccab95-3161-46b1-a680-b6f5c38ab4ef",
+  "packageName": "com.brwncald.teams.folder",
+  "developer": {
+    "name": "Brown and Caldwell",
+    "websiteUrl": "https://brownandcaldwell.com",
+    "privacyUrl": "https://brownandcaldwell.com",
+    "termsOfUseUrl": "https://brownandcaldwell.com"
+  },
+  "icons": {
+    "color": "icon-color.png",
+    "outline": "icon-outline.png"
+  },
+  "name": {
+    "short": "Project Folder Extension",
+    "full": "BC Project Folder Extension"
+  },
+  "description": {
+    "short": "Messaging extension for sending project folder links internally",
+    "full": "Messaging extension for sending project folder and file links to people internally"
+  },
+  "accentColor": "#FFFFFF",
+  "composeExtensions": [
+    {
+      "botId": "f1ccab95-3161-46b1-a680-b6f5c38ab4ef",
+      "canUpdateConfiguration": false,
+      "commands": [
         {
-            "botId": "c76c3bcb-88bd-429d-81bf-9cb58936d3b1",
-            "canUpdateConfiguration": false,
-            "commands": [
-                {
-                    "id": "insertServerLink",
-                    "type": "action",
-                    "title": "Insert Server Link",
-                    "description": "Insert a link to a server folder or file",
-                    "initialRun": false,
-                    "fetchTask": false,
-                    "context": [
-                        "compose",
-                        "message"
-                    ],
-                    "parameters": [
-                      {
-                        "name": "link",
-                        "title": "Link",
-                        "description": "i.e. \\\\bcphxfp01\\Projects\\Example Client\\Example Project",
-                        "inputType": "text"
-                      }
-                    ]
-                }
-            ]
+          "id": "insertServerLink",
+          "type": "action",
+          "title": "Insert Server Link",
+          "description": "Insert a link to a server folder or file",
+          "initialRun": false,
+          "fetchTask": false,
+          "context": [
+            "compose",
+            "message"
+          ],
+          "parameters": [
+            {
+              "name": "link",
+              "title": "Link",
+              "description": "i.e. \\\\bcphxfp01\\Projects\\Example Client\\Example Project",
+              "inputType": "text"
+            }
+          ]
         }
-    ],
-    "permissions": [
-        "identity",
-        "messageTeamMembers"
-    ],
-    "validDomains": []
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": []
 }
