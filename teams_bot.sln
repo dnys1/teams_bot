@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ms-teams-bot", "ms-teams-bot\ms-teams-bot.csproj", "{A8F91827-1705-4175-91C4-F6235776B3B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "teams_bot", "ms-teams-bot\teams_bot.csproj", "{A8F91827-1705-4175-91C4-F6235776B3B9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "open_folder", "open_folder\open_folder.csproj", "{C72C9EB6-80B4-442C-8F76-6E7CA4B5F371}"
 EndProject
