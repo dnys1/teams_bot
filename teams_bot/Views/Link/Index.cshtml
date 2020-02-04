@@ -8,3 +8,8 @@
     <code>@Model.Link</code>
 </div>*@
 <input id="path" type="hidden" value="@Model.Link" />
+<script>
+    if ("@Model.Link".indexOf("pw://") !== -1) {
+        window.location = "@Model.Link";
+    }
+</script>

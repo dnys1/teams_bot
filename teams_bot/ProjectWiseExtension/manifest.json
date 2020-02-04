@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.5/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.5",
+  "version": "1.0",
+  "id": "f1ccab95-3161-46b1-a680-b6f5c38ab4ef",
+  "packageName": "com.brwncald.teams.projectwise",
+  "developer": {
+    "name": "Brown and Caldwell",
+    "websiteUrl": "https://brownandcaldwell.com",
+    "privacyUrl": "https://brownandcaldwell.com",
+    "termsOfUseUrl": "https://brownandcaldwell.com"
+  },
+  "icons": {
+    "color": "icon-color.png",
+    "outline": "icon-outline.png"
+  },
+  "name": {
+    "short": "ProjectWise Share",
+    "full": "BC ProjectWise Share"
+  },
+  "description": {
+    "short": "Messaging extension for sending ProjectWise links",
+    "full": "Messaging extension for sending ProjectWise links to people"
+  },
+  "accentColor": "#FFFFFF",
+  "composeExtensions": [
+    {
+      "botId": "f1ccab95-3161-46b1-a680-b6f5c38ab4ef",
+      "canUpdateConfiguration": false,
+      "commands": [
+        {
+          "id": "insertServerLink",
+          "type": "action",
+          "title": "Insert ProjectWise Link",
+          "description": "Insert a link to a ProjectWise folder or file",
+          "initialRun": false,
+          "fetchTask": false,
+          "context": [
+            "compose",
+            "message"
+          ],
+          "parameters": [
+            {
+              "name": "link",
+              "title": "ProjectWise Link",
+              "description": "i.e. pw://brwncald-pw.bentley.com:brwncald-pw-01/...",
+              "inputType": "text"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": []
+}

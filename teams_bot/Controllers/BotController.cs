@@ -102,32 +102,48 @@ namespace BC.ServerTeamsBot.Controllers
                     jsonObj.Value.Data.OriginalLink = link;
                 }
 
+                if (LinkFormatter.IsDocumentURN(link))
+                {
+                    // Remove 'url:' from beginning of link
+                    link = link.Substring("url:".Length);
+                    jsonObj.Value.Data.OriginalLink = link;
+                }
+
                 if (!LinkFormatter.IsProperlyFormatted(link))
                 {
                     throw new Exception("Improperly formatted string. Please try again.");
                 }
 
-                // Retrieve user's home drive if a P:/ link
-                if (link.Contains("P:/"))
+                if (LinkFormatter.IsProjectWiseLink(link))
                 {
-                    var UNCRoot = await GetHomeUNC(from);
-                }
-
-                // Create the links in the database and embed in Request.Body
-                if (Path.HasExtension(link))
-                {
-                    // Create both a file and folder link for file paths given,
-                    // in case the user would like to go to the enclosing folder.
                     var fileLink = await RegisterLinkInDatabase(from, link);
                     jsonObj.Value.Data.FileLink = fileLink;
-
-                    var folderLink = await RegisterLinkInDatabase(from, Path.GetDirectoryName(link));
-                    jsonObj.Value.Data.FolderLink = folderLink;
-                } else
+                }
+                else
                 {
-                    // Create only the folder link for folder paths sent.
-                    var folderLink = await RegisterLinkInDatabase(from, link);
-                    jsonObj.Value.Data.FolderLink = folderLink;
+                    // Retrieve user's home drive if a P:/ link
+                    if (link.Contains("P:/"))
+                    {
+                        var UNCRoot = await GetHomeUNC(from);
+                    }
+
+                    // Create the links in the database and embed in Request.Body
+                    if (Path.HasExtension(link))
+                    {
+                        // Create both a file and folder link for file paths given,
+                        // in case the user would like to go to the enclosing folder.
+                        var fileLink = await RegisterLinkInDatabase(from, link);
+                        jsonObj.Value.Data.FileLink = fileLink;
+
+                        var folderLink = await RegisterLinkInDatabase(from, Path.GetDirectoryName(link));
+                        jsonObj.Value.Data.FolderLink = folderLink;
+                    }
+                    else
+                    {
+                        // Create only the folder link for folder paths sent.
+                        var folderLink = await RegisterLinkInDatabase(from, link);
+                        jsonObj.Value.Data.FolderLink = folderLink;
+                    }
                 }
 
                 var json = JsonConvert.SerializeObject(jsonObj);
@@ -137,7 +153,8 @@ namespace BC.ServerTeamsBot.Controllers
                 Request.Body = stream;
 
                 await Adapter.ProcessAsync(Request, Response, Bot);
-            } else
+            }
+            else
             {
                 throw new Exception("Error processing request. Please try again.");
             }
